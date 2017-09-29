@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="BLL.Test.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="WebApiUrl" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://192.168.10.129/webapi/</Value>
+    </Setting>
+    <Setting Name="WebApiUrl2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://localhost:51426/</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
