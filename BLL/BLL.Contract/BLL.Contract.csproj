@@ -45,8 +45,10 @@
     <Compile Include="ArticleComment.cs" />
     <Compile Include="Category.cs" />
     <Compile Include="OperResult.cs" />
+    <Compile Include="Paging.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Role.cs" />
+    <Compile Include="SaveTicket.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

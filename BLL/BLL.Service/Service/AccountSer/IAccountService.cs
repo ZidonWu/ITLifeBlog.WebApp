@@ -11,17 +11,21 @@ namespace BLL.Service.Service.AccountSer
     {
         string Login(string name, string password);
 
+        string GetTicket(string name, string password);
+
         OperResult Add(Account account);
 
-        IEnumerable<Account> GetAllList();
+        IEnumerable<Account> FindList();    
 
-        Account GetById(int id);
+        Account FindById(int id);
 
-        Account GetByName(string name);
+        Account FindByName(string name);
 
-        OperResult UpdateById(Account account, int id);
+        OperResult UpdateById(int id, Account account);
 
-        OperResult UpdateByName(Account account, string name);
+        OperResult UpdateByName(string name, Account account);
+
+        OperResult UpdatePassword(int id, Account account);  
 
         OperResult DeleteById(int id);
 

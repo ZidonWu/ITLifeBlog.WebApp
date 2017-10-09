@@ -13,7 +13,7 @@ namespace BLL.Service.Service.RoleSer
         Role Find(int id);
         Role Find(Expression<Func<Role, bool>> where);
 
-        IQueryable<Role> FindList();
+        IEnumerable<Role> FindList();
 
         OperResult Add(Role role);
         OperResult Update(int id);

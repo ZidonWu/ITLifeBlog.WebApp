@@ -11,7 +11,8 @@ namespace UI.Web
 {
     public static class UnityConfig
     {
-        static string _url = Properties.Settings.Default.WebApiUrl;
+        static string _url = Properties.Settings.Default.WebApiUrl4;
+
         public static void RegisterComponents()
         {
 			var container = new UnityContainer();

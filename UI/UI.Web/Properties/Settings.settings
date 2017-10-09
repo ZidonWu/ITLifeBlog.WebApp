@@ -8,5 +8,11 @@
     <Setting Name="WebApiUrl2" Type="System.String" Scope="Application">
       <Value Profile="(Default)">http://localhost:51426/</Value>
     </Setting>
+    <Setting Name="WebApiUrl3" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://localhost/webapi/</Value>
+    </Setting>
+    <Setting Name="WebApiUrl4" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.1.4/webapi/</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

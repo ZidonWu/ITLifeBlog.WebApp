@@ -6,8 +6,13 @@ using System.Threading.Tasks;
 
 namespace BLL.Contract
 {
+    /// <summary>
+    /// 帐户类
+    /// </summary>
     public class Account
     {
+        public int Id { get; set; }
+
         public string Name { get; set; }
 
         public string Password { get; set; }
@@ -17,8 +22,6 @@ namespace BLL.Contract
         public string Ticket { get; set; }
 
         public int RoleId { get; set; }
-
-        public int Id { get; set; }
 
     }
 }

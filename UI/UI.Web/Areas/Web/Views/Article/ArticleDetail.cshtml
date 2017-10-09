@@ -1,0 +1,32 @@
+﻿@using UI.Web.Areas.Web.Models
+@model ListModel
+
+<div class="content-body">
+    <div class="container">
+        <div class="row">
+            <main class="col-md-12">
+                <article class="post post-1">
+                    <header class="entry-header">
+                        <h1 class="entry-title">@Model.Article.Title</h1>
+                        <div class="entry-meta">
+                            <span class="post-category">Category:<a href="@Html.Raw("/Web/Article/ArticleCategory/" + Model.Article.CategoryId)">@Model.Article.CategoryId</a></span>
+
+                            <span class="post-date">Date:<a href="#"><time class="entry-date" datetime="2012-11-09T23:15:57+00:00">@Model.Article.CreateTime.ToString("yyyy-MM-dd")</time></a></span>
+
+                            <span class="comments-link">Author:<a href="#">@Model.Article.AccountId</a></span>
+
+                            @*<span class="comments-link"><a href="#">@Model.Article.CommentNum</a></span>*@
+                        </div>
+                    </header>
+                    <div class="entry-content clearfix">
+                        @{ 
+                            MarkdownSharp.Markdown markdown = new MarkdownSharp.Markdown();
+                        }
+                        @MvcHtmlString.Create(markdown.Transform(Model.Article.Content))
+                        @*@Html.Raw(Model.Article.Content)*@
+                    </div>
+                </article>
+            </main>
+        </div>
+    </div>
+</div>

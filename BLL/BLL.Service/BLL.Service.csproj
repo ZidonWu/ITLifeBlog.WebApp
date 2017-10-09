@@ -48,11 +48,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseService.cs" />
-    <Compile Include="IBaseService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\AccountSer\AccountService.cs" />
     <Compile Include="Service\AccountSer\IAccountService.cs" />
+    <Compile Include="Service\ArticleCommentSer\ArticleCommentService.cs" />
+    <Compile Include="Service\ArticleCommentSer\IArticleCommentService.cs" />
     <Compile Include="Service\ArticleSer\ArticleService.cs" />
     <Compile Include="Service\ArticleSer\IArticleService.cs" />
     <Compile Include="Service\CategorySer\CategoryService.cs" />
@@ -73,8 +73,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Service\ArticleCommentSer\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -16,37 +16,34 @@ namespace BLL.Service.Service.ArticleSer
             _url = url;
         }
 
-        private string GetTicket()
-        {
-            var url = _url + "api/Account/Login?name=admin&password=123";
-            return WebApiHelper.GetEntity<Account>(url).Ticket;
-        }
-
         public OperResult Add(Article article)
         {
-            var ticket = GetTicket();
+            var ticket = SaveTicket.Ticket;
             var addr = _url + "api/Article/Add";
             return WebApiHelper.PostEntity<Article>(addr, article, ticket);
         }
 
         public int Count()
         {
-            var ticket = GetTicket();
+            var ticket = SaveTicket.Ticket;
             var addr = _url + "api/Article/GetCount";
             return WebApiHelper.GetEntity<int>(addr, ticket);
         }
 
-        public int CountByUserName(string name) 
+        public int CountByAccountName(string accountName)
         {
-            var ticket = GetTicket();
-            var addr = _url + "api/Article/GetCountByUserName?name={0}";
-            addr = string.Format(addr, name);
+            var ticket = SaveTicket.Ticket;
+            var addr = _url + "api/Article/GetCountByAccountName?accountName={0}";
+            addr = string.Format(addr, accountName);
             return WebApiHelper.GetEntity<int>(addr, ticket);
         }
 
-        public OperResult Delete(int id)
+        public OperResult Delete(int id, Article article)
         {
-            throw new NotImplementedException();
+            var ticket = SaveTicket.Ticket;
+            var addr = _url + "api/Article/DeleteById/{0}";
+            addr = string.Format(addr, id);
+            return WebApiHelper.PostEntity<Article>(addr, article, ticket);
         }
 
         public OperResult Delete(Article entity)
@@ -61,7 +58,10 @@ namespace BLL.Service.Service.ArticleSer
 
         public Article Find(int id)
         {
-            throw new NotImplementedException();
+            var ticket = SaveTicket.Ticket;
+            var addr = _url + "api/Article/GetById/{0}";
+            addr = string.Format(addr, id);
+            return WebApiHelper.GetEntity<Article>(addr, ticket);
         }
 
         public Article Find(Expression<Func<Article, bool>> where)
@@ -69,12 +69,14 @@ namespace BLL.Service.Service.ArticleSer
             throw new NotImplementedException();
         }
 
-        public IQueryable<Article> FindList()
+        public IEnumerable<Article> FindList()
         {
-            throw new NotImplementedException();
+            var ticket = SaveTicket.Ticket;
+            var addr = _url + "api/Article/GetAllList";
+            return WebApiHelper.GetEntitys<Article>(addr, ticket);
         }
 
-        public IQueryable<Article> FindList(Expression<Func<Article, bool>> where)
+        public IEnumerable<Article> FindList(Expression<Func<Article, bool>> where)
         {
             throw new NotImplementedException();
         }
@@ -84,9 +86,11 @@ namespace BLL.Service.Service.ArticleSer
             throw new NotImplementedException();
         }
 
-        public OperResult Update(Article entity)
+        public OperResult Update(Article article)
         {
-            throw new NotImplementedException();
+            var ticket = SaveTicket.Ticket;
+            var addr = _url + "api/Article/Update";
+            return WebApiHelper.PostEntity<Article>(addr, article, ticket);
         }
 
         public OperResult Update(Expression<Func<Article, bool>> where)
@@ -94,9 +98,44 @@ namespace BLL.Service.Service.ArticleSer
             throw new NotImplementedException();
         }
 
-        public IQueryable<Article> FindListByUserName(string name)
+        public IEnumerable<Article> FindListByAccountName(string accountName)
         {
-            throw new NotImplementedException();
+            var ticket = SaveTicket.Ticket;
+            var addr = _url + "api/Article/GetListByAccountName?accountName={0}";
+            addr = string.Format(addr, accountName);
+            return WebApiHelper.GetEntitys<Article>(addr, ticket);
+        }
+
+        public IEnumerable<Article> FindListByAccountId(string accountId)
+        {
+            var ticket = SaveTicket.Ticket;
+            var addr = _url + "api/Article/GetListByAccountId?accountId={0}";
+            addr = string.Format(addr, accountId);
+            return WebApiHelper.GetEntitys<Article>(addr, ticket);
+        }
+
+        public IEnumerable<Article> FindPageList(int? pageIndex, string where = "")
+        {
+            var ticket = SaveTicket.Ticket;
+            var addr = _url + "api/Article/GetPageList?pageIndex={0}";
+            addr = string.Format(addr, pageIndex);
+            return WebApiHelper.GetEntitys<Article>(addr, ticket);
+        }
+
+        public IEnumerable<Article> FindPageListByCategoryId(int? pageIndex, int id)
+        {
+            var ticket = SaveTicket.Ticket;
+            var addr = _url + "api/Article/GetPageListByCategoryId/{0}?pageIndex={1}";
+            addr = string.Format(addr, id, pageIndex);
+            return WebApiHelper.GetEntitys<Article>(addr, ticket);
+        }
+
+        public IEnumerable<Article> FindPageListByAccountId(int? pageIndex, int id)
+        {
+            var ticket = SaveTicket.Ticket;
+            var addr = _url + "api/Article/GetPageListByAccountId/{0}?pageIndex={1}";
+            addr = string.Format(addr, id, pageIndex);
+            return WebApiHelper.GetEntitys<Article>(addr, ticket);
         }
     }
 }

@@ -23,6 +23,12 @@ namespace BLL.Test
         [TestMethod]
         public void TestMethod1()
         {
+            var account = new Account()
+            {
+                Name = "string",
+                Password = "string"
+            };
+            var result = _accountService.GetByName(account.Name);
             Role role = new Role()
             {
                 Name = "普通用户",
@@ -50,7 +56,7 @@ namespace BLL.Test
                 Name = "admin",
                 Password = "123"
             };
-           var result = _accountService.Login(account);
+           var result = _accountService.Login(account.Name,account.Password);
             Console.WriteLine(result);
         }
     }

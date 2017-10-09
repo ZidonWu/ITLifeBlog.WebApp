@@ -13,20 +13,26 @@ namespace BLL.Service.Service.ArticleSer
         Article Find(int id);
         Article Find(Expression<Func<Article, bool>> where);
 
-        IQueryable<Article> FindList();
-        IQueryable<Article> FindListByUserName(string name);    
-        IQueryable<Article> FindList(Expression<Func<Article, bool>> where);    
+        IEnumerable<Article> FindList();
+        IEnumerable<Article> FindListByAccountId(string accountId);
+        IEnumerable<Article> FindListByAccountName(string accountName);
+        IEnumerable<Article> FindList(Expression<Func<Article, bool>> where);
 
         OperResult Add(Article article);
         OperResult Update(int id);
-        OperResult Update(Article article); 
+        OperResult Update(Article article);
         OperResult Update(Expression<Func<Article, bool>> where);
-        OperResult Delete(int id);
-        OperResult Delete(Article article); 
+        OperResult Delete(int id, Article article);
+        OperResult Delete(Article article);
         OperResult Delete(Expression<Func<Article, bool>> where);
 
         int Count();
-        int CountByUserName(string name);
+        int CountByAccountName(string accountName);
+            
+        IEnumerable<Article> FindPageListByCategoryId(int? pageIndex, int id);
 
+        IEnumerable<Article> FindPageListByAccountId(int? pageIndex, int id);   
+
+        IEnumerable<Article> FindPageList(int? pageIndex, string where = "");
     }
 }

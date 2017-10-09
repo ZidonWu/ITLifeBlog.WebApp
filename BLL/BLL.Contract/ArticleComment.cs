@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace BLL.Contract
 {
+    /// <summary>
+    /// 文章评论类
+    /// </summary>
     public class ArticleComment
     {
 

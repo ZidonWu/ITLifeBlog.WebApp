@@ -1,4 +1,4 @@
-﻿@using UI.Web.Areas.Admin.Models
+﻿@using UI.Web.Areas.Admin.Utility
 
 @model CurrentUser
 
@@ -29,63 +29,38 @@
                         <div class="panel-body">
                             <ul class="nav navbar-nav">
                                 <li>
-                                    <a href="#">ArticleList</a>
+                                    <a href="@Url.Action("Index","Article",new { Areas = "Admin" })">ArticleList</a>
                                 </li>
                                 <li>
-                                    <a href="#">ArticleAdd</a>
+                                    <a href="@Url.Action("ArticleAdd","Article",new { Areas = "Admin" })">ArticleAdd</a>
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </li>
-                <li class="panel panel-default dropdown">
-                    <a data-toggle="collapse" href="#dropdown-category">
-                        <span class="icon fa fa-bookmark"></span><span class="title">CategoryManagement</span>
-                    </a>
-                    <!-- Dropdown level 1 -->
-                    <div id="dropdown-category" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            <ul class="nav navbar-nav">
-                                <li>
-                                    <a href="#">CategoryList</a>
-                                </li>
-                                <li>
-                                    <a href="#">CategoryAdd</a>
-                                </li>
-                            </ul>
+                @if (CurrentUser.RoleId == "1")
+                {
+                    <li class="panel panel-default dropdown">
+                        <a data-toggle="collapse" href="#dropdown-category">
+                            <span class="icon fa fa-bookmark"></span><span class="title">CategoryManagement</span>
+                        </a>
+                        <!-- Dropdown level 1 -->
+                        <div id="dropdown-category" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <ul class="nav navbar-nav">
+
+                                    <li>
+                                        <a href="@Url.Action("Index","Category",new { Areas = "Admin" })">CategoryList</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("CategoryAdd","Category",new { Areas = "Admin" })">CategoryAdd</a>
+                                    </li>
+
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                </li>
-                <li class="panel panel-default dropdown">
-                    <a data-toggle="collapse" href="#dropdown-comment">
-                        <span class="icon fa fa-comments"></span><span class="title">CommentManagement</span>
-                    </a>
-                    <!-- Dropdown level 1 -->
-                    <div id="dropdown-comment" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            <ul class="nav navbar-nav">
-                                <li>
-                                    <a href="#">CommentList</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li class="panel panel-default dropdown">
-                    <a data-toggle="collapse" href="#dropdown-message">
-                        <span class="icon fa fa-pencil"></span><span class="title">MessageManagement</span>
-                    </a>
-                    <!-- Dropdown level 1 -->
-                    <div id="dropdown-message" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            <ul class="nav navbar-nav">
-                                <li>
-                                    <a href="#">MessageList</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
+                    </li>
+                }
                 <li class="panel panel-default dropdown">
                     <a data-toggle="collapse" href="#dropdown-album">
                         <span class="icon fa fa-photo"></span><span class="title">AlbumManagement</span>
@@ -111,21 +86,21 @@
                     </div>
                 </li>
                 <li class="panel panel-default dropdown">
-                    <a data-toggle="collapse" href="#dropdown-account">
-                        <span class="icon fa fa-users"></span><span class="title">UserManagement</span>
+                    <a data-toggle="collapse" href="#dropdown-user">
+                        <span class="icon fa fa-user"></span><span class="title">UserManagement</span>
                     </a>
                     <!-- Dropdown level 1 -->
-                    <div id="dropdown-account" class="panel-collapse collapse">
+                    <div id="dropdown-user" class="panel-collapse collapse">
                         <div class="panel-body">
                             <ul class="nav navbar-nav">
                                 <li>
-                                    <a href="#">UpdatePassword</a>
+                                    <a href="@Url.Action("UpdatePassword","Account",new { Areas = "Admin" })">UpdatePassword</a>
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </li>
-                @if (CurrentUser.Role == "Administrators")
+                @if (CurrentUser.RoleId == "1")
                 {
                     <li class="panel panel-default dropdown">
                         <a data-toggle="collapse" href="#dropdown-account">
@@ -136,10 +111,13 @@
                             <div class="panel-body">
                                 <ul class="nav navbar-nav">
                                     <li>
-                                        <a href="#">AccountList</a>
+                                        <a href="@Url.Action("Index","Account",new { Areas = "Admin" })">AccountList</a>
                                     </li>
                                     <li>
-                                        <a href="#">AccountAdd</a>
+                                        <a href="@Url.Action("AccountAdd","Account",new { Areas = "Admin" })">AccountAdd</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("UpdatePassword","Account",new { Areas = "Admin" })">UpdatePassword</a>
                                     </li>
                                 </ul>
                             </div>
@@ -154,10 +132,10 @@
                             <div class="panel-body">
                                 <ul class="nav navbar-nav">
                                     <li>
-                                        <a href="#">RoleList</a>
+                                        <a href="@Url.Action("Index","Role",new { Areas = "Admin" })">RoleList</a>
                                     </li>
                                     <li>
-                                        <a href="#">RoleAdd</a>
+                                        <a href="@Url.Action("RoleAdd","Role",new { Areas = "Admin" })">RoleAdd</a>
                                     </li>
                                 </ul>
                             </div>
@@ -174,15 +152,11 @@
                                     <li>
                                         <a href="#"></a>
                                     </li>
-                                    <li>
-                                        <a href="#"></a>
-                                    </li>
                                 </ul>
                             </div>
                         </div>
                     </li>
                 }
-
             </ul>
         </div>
         <!-- /.navbar-collapse -->

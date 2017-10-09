@@ -14,8 +14,8 @@ namespace BLL.Service.Service.UserSer
         {
             _url = url;
         }
-            
-        public IEnumerable<User> FindAllList()
+
+        public IEnumerable<User> FindList() 
         {
             throw new NotImplementedException();
         }

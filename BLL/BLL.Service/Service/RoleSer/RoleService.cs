@@ -16,15 +16,9 @@ namespace BLL.Service.Service.RoleSer
             _url = url;
         }
 
-        private string GetTicket()
-        {
-            var url = _url + "api/Account/Login?name=admin&password=123";
-            return WebApiHelper.GetEntity<Account>(url).Ticket;
-        }
-
         public OperResult Add(Role role)
         {
-            var ticket = GetTicket();
+            var ticket = SaveTicket.Ticket;
             var addr = _url + "api/Role/Add";
             return WebApiHelper.PostEntity<Role>(addr, role, ticket);
         }
@@ -54,9 +48,11 @@ namespace BLL.Service.Service.RoleSer
             throw new NotImplementedException();
         }
 
-        public IQueryable<Role> FindList()
+        public IEnumerable<Role> FindList()
         {
-            throw new NotImplementedException();
+            var ticket = SaveTicket.Ticket;
+            var addr = _url + "api/Role/GetAllList";
+            return WebApiHelper.GetEntitys<Role>(addr, ticket);
         }
 
         public IQueryable<Role> FindList(Expression<Func<Role, bool>> where)

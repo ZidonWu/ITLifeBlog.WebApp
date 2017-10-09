@@ -40,5 +40,23 @@ namespace UI.Web.Properties {
                 return ((string)(this["WebApiUrl2"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost/webapi/")]
+        public string WebApiUrl3 {
+            get {
+                return ((string)(this["WebApiUrl3"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.1.4/webapi/")]
+        public string WebApiUrl4 {
+            get {
+                return ((string)(this["WebApiUrl4"]));
+            }
+        }
     }
 }

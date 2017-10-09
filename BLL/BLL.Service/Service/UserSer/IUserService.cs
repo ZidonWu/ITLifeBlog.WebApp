@@ -9,7 +9,7 @@ namespace BLL.Service.Service.UserSer
 {
     public interface IUserService
     {
-        IEnumerable<User> FindAllList();
+        IEnumerable<User> FindList();   
 
     }
 }

@@ -1,0 +1,88 @@
+﻿@using UI.Web.Areas.Admin.Models
+@model ArticleViewModel
+
+@*<link href="~/Src/editor.md-master/examples/css/style.css" rel="stylesheet" />*@
+<link href="~/Src/editor.md-master/css/editormd.css" rel="stylesheet" />
+<!-- Main Content -->
+<div class="container-fluid">
+    <div class="side-body">
+        <div class="page-title">
+            <span class="title">ArticleUpdate</span>
+            <div class="description"></div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <div class="title">ArticleUpdate form</div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        @using (Html.BeginForm("ArticleUpdate", "Article", FormMethod.Post, new { @class = "margin-bottom-0", role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                <label for="inputTitle">Title</label>
+                                @Html.TextBoxFor(m => m.Title, new { @class = "form-control", id = "inputTitle", placeholder = "Title" })
+                                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <label for="inputDescription">Description</label>
+                                @Html.TextBoxFor(m => m.Description, new { @class = "form-control", id = "inputDescription", placeholder = "Description" })
+                                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                            </div>
+                            @*<div class="form-group">
+                                <label for="inputContent" class="col-sm-2 control-label">Content</label>
+                                <div class="col-sm-10">
+                                    @Html.TextAreaFor(m => m.Content, new { @class = "ckeditor", rows = "10" })
+                                    @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+                                </div>
+                            </div>*@  
+                                <div class="form-group">
+                                        <label for="inputContent">Content</label>
+                                        <div id="test-editormd">
+                                            @Html.TextAreaFor(m => m.Content, new { @class = "form-control", style = "display:none;" })
+                                        </div>
+                                    </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <button type="submit" class="btn btn-default">Update</button>
+                                    </div>
+                                </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/Src/ckeditor/ckeditor.js"></script>
+
+<script src="~/Src/editor.md-master/examples/js/jquery.min.js"></script>
+<script src="~/Src/editor.md-master/editormd.min.js"></script>
+<script type="text/javascript">
+    var testEditor;
+
+    $(function () {
+        testEditor = editormd("test-editormd", {
+            width: "100%",
+            height: 640,
+            syncScrolling: "single",
+            path: "/Src/editor.md-master/lib/"
+        });
+
+        /*
+        // or
+        testEditor = editormd({
+            id      : "test-editormd",
+            width   : "90%",
+            height  : 640,
+            path    : "../lib/"
+        });
+        */
+    });
+</script>

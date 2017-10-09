@@ -10,20 +10,22 @@ namespace BLL.Service.Service.CategorySer
 {
     public interface ICategoryService
     {
+        Category Find(int id);
+
         IEnumerable<Category> FindList();
 
         OperResult Add(Category category);
-        
+
         OperResult Update(int id);
-        
+
         OperResult Update(Category category);
-        
-        OperResult Update(Expression<Func<Category,bool>> where);
-        
+
+        OperResult Update(Expression<Func<Category, bool>> where);
+
         OperResult Delete(int id);
-        
+
         OperResult Delete(Category category);
-        
-        OperResult Delete(Expression<Func<Category,bool>> where);
+
+        OperResult Delete(Expression<Func<Category, bool>> where);
     }
 }

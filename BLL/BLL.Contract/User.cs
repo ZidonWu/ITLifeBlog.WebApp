@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace BLL.Contract
 {
+    /// <summary>
+    /// 用户类
+    /// </summary>
     public class User
     {
         public string Name { get; set; }
