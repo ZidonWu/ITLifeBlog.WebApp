@@ -3,7 +3,11 @@
         <div class="row">
             <div class="col-md-4 col-sm-5 col-xs-8">
                 <div class="logo">
-                    <h1><a href="@Url.Action("Index","Home",new { Areas = "Web" })"><b>ITLifeBlog</b> &amp; Web</a></h1>
+                    <h1>
+                        <a href="@Url.Action("Index","Home",new { Areas = "Web" })">
+                            <img src="~/logo.png" height="50px"/>
+                        </a>
+                    </h1>
                 </div>
             </div><!-- col-md-4 -->
             <div class="col-md-8 col-sm-7 col-xs-4">
@@ -23,14 +27,14 @@
                     </div><!-- /.navbar-collapse -->
                 </nav>
                 @*<div id="header-search-box">
-                    <a id="search-menu" href="#"><span id="search-icon" class="ion-ios-search-strong"></span></a>
-                    <div id="search-form" class="search-form">
-                        <form role="search" method="get" id="searchform" action="#">
-                            <input type="search" placeholder="Search" required>
-                            <button type="submit"><span class="ion-ios-search-strong"></span></button>
-                        </form>
-                    </div>
-                </div>*@
+                        <a id="search-menu" href="#"><span id="search-icon" class="ion-ios-search-strong"></span></a>
+                        <div id="search-form" class="search-form">
+                            <form role="search" method="get" id="searchform" action="#">
+                                <input type="search" placeholder="Search" required>
+                                <button type="submit"><span class="ion-ios-search-strong"></span></button>
+                            </form>
+                        </div>
+                    </div>*@
             </div><!-- col-md-8 -->
         </div>
     </header>

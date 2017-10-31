@@ -12,9 +12,13 @@ namespace UI.Web.Areas.Web.Models
 
         public Article Article { get; set; }
 
-        public IList<Article> ArticleModels2 { get; set; }  
+        public IList<Article> ArticleModels2 { get; set; }
+
+        public Category Category { get; set; }
 
         public IList<Category> CategoryModels { get; set; }
+
+        public Account Account { get; set; }
 
         public IList<Account> AccountModels { get; set; }   
     }

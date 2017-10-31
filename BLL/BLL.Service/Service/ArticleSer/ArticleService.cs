@@ -64,6 +64,14 @@ namespace BLL.Service.Service.ArticleSer
             return WebApiHelper.GetEntity<Article>(addr, ticket);
         }
 
+        public Article Find(string guid)
+        {
+            var ticket = SaveTicket.Ticket;
+            var addr = _url + "api/Article/GetByGuid/{0}";
+            addr = string.Format(addr, guid);
+            return WebApiHelper.GetEntity<Article>(addr, ticket);
+        }
+
         public Article Find(Expression<Func<Article, bool>> where)
         {
             throw new NotImplementedException();

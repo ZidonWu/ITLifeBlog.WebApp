@@ -1,6 +1,9 @@
 ﻿@{
     var result = ViewData["result"] as IEnumerable<BLL.Contract.Article>;
 }
+@using UI.Web.Areas.Admin.Utility
+
+@model CurrentUser
 
 <!-- Main Content -->
 <div class="container-fluid">
@@ -18,48 +21,90 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <table class="datatable table table-striped" cellspacing="0" width="100%">
-                            <thead>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>ArticleGuid</th>
-                                    <th>Title</th>
-                                    <th>CreateTime</th>
-                                    <th>AccountId</th>
-                                    <th>CategoryId</th>
-                                    <th>Operate</th>
-                                </tr>
-                            </thead>
-                            <tfoot>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>ArticleGuid</th>
-                                    <th>Title</th>
-                                    <th>CreateTime</th>
-                                    <th>AccountId</th>
-                                    <th>CategoryId</th>
-                                    <th>Operate</th>
-                                </tr>
-                            </tfoot>
-                            <tbody>
-                                @foreach (var item in result)
-                                {
-                                    <tr>
-                                        <td>@item.Id</td>
-                                        <td>@item.ArticleGuid</td>
-                                        <td>@item.Title</td>
-                                        <td>@item.CreateTime</td>
-                                        <td>@item.AccountId</td>
-                                        <td>@item.CategoryId</td>
-                                        <td><a class="btn btn-default" href="@Html.Raw("/Admin/Article/ArticleUpdate/" + item.Id)">编辑</a><span> </span><a class="btn btn-default" href="@Html.Raw("/Admin/Article/ArticleDelete/" + item.Id)">删除</a>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
+                        @{
+                            if (CurrentUser.RoleId == "1")
+                            {
+                                <table class="datatable table table-striped" cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>ArticleGuid</th>
+                                            <th>Title</th>
+                                            <th>CreateTime</th>
+                                            <th>AccountId</th>
+                                            <th>CategoryId</th>
+                                            <th>Operate</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>ArticleGuid</th>
+                                            <th>Title</th>
+                                            <th>CreateTime</th>
+                                            <th>AccountId</th>
+                                            <th>CategoryId</th>
+                                            <th>Operate</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        @foreach (var item in result)
+                                        {
+                                            <tr>
+                                                <td>@item.Id</td>
+                                                <td>@item.ArticleGuid</td>
+                                                <td>@item.Title</td>
+                                                <td>@item.CreateTime</td>
+                                                <td>@item.AccountId</td>
+                                                <td>@item.CategoryId</td>
+                                                <td><a class="btn btn-default" href="@Html.Raw("/Admin/Article/ArticleUpdate/" + item.Id)">Edit</a><span> </span><a class="btn btn-default" href="@Html.Raw("/Admin/Article/ArticleDelete/" + item.Id)">Delete</a>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            }
+                            else
+                            {
+                                <table class="datatable table table-striped" cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>ArticleGuid</th>
+                                            <th>Title</th>
+                                            <th>CreateTime</th>
+                                            <th>CategoryId</th>
+                                            <th>Operate</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>ArticleGuid</th>
+                                            <th>Title</th>
+                                            <th>CreateTime</th>
+                                            <th>CategoryId</th>
+                                            <th>Operate</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        @foreach (var item in result)
+                                        {
+                                            <tr>
+                                                <td>@item.Id</td>
+                                                <td>@item.ArticleGuid</td>
+                                                <td>@item.Title</td>
+                                                <td>@item.CreateTime</td>
+                                                <td>@item.CategoryId</td>
+                                                <td><a class="btn btn-default" href="@Html.Raw("/Admin/Article/ArticleUpdate/" + item.Id)">Edit</a><span> </span><a class="btn btn-default" href="@Html.Raw("/Admin/Article/ArticleDelete/" + item.Id)">Delete</a>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            }
+                        }
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-

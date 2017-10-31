@@ -10,22 +10,19 @@
                     <article class="post post-1">
                         <header class="entry-header">
                             <h1 class="entry-title">
-                                <a href="single.html">@item.Title</a>
+                                <a href="@Html.Raw("/Web/Article/ArticleDetail/" + item.Id)">@item.Title</a>
                             </h1>
                             <div class="entry-meta">
-                                <span class="post-category">Category:<a href="#">@item.CategoryId</a></span>
-
-                                <span class="post-date"><a href="#"><time class="entry-date" datetime="2012-11-09T23:15:57+00:00">@item.CreateTime.ToString("yyyy-MM-dd")</time></a></span>
-
-                                <span class="comments-link">Author:<a href="#">@item.AccountId</a></span>
-
+                                <span class="post-category">Category:<a href="@Html.Raw("/Web/Article/ArticleCategory/" + item.CategoryId)">@item.Category.Name</a></span>
+                                <span class="post-date">Date:<a href="#"><time class="entry-date" datetime="2012-11-09T23:15:57+00:00">@item.CreateTime.ToString("yyyy-MM-dd")</time></a></span>
+                                <span class="comments-link">Author:<a href="@Html.Raw("/Web/Article/ArticleAccount/" + item.AccountId)">@item.Account.Name</a></span>
                                 @*<span class="comments-link"><a href="">@item.CommentNum</a></span>*@
                             </div>
                         </header>
                         <div class="entry-content clearfix">
                             <p>@item.Description</p>
                             <div class="read-more cl-effect-14">
-                                <a href="#" class="more-link">Continue reading <span class="meta-nav">→</span></a>
+                                <a href="@Html.Raw("/Web/Article/ArticleDetail/" + item.Id)" class="more-link">Continue Reading <span class="meta-nav">→</span></a>
                             </div>
                         </div>
                     </article>
@@ -34,11 +31,11 @@
                 <div class="section-container">
                     <!-- begin pagination -->
                     <div class="pagination-container text-center">
-                        <div class="col-md-3" style="margin-top:28px;">
-                            当前页 @ViewBag.PageIndex
-                            共 @ViewBag.PageCount 页
+                        <div class="col-md-4" style="margin-top:28px;">
+                            Current Page: @ViewBag.PageIndex
+                            Total Page: @ViewBag.PageCount
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-8">
                             <ul class="pagination m-t-0 m-b-0">
                                 @Html.Raw(ViewBag.Page)
                             </ul>

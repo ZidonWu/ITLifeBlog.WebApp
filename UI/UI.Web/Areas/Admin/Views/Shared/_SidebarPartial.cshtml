@@ -1,6 +1,6 @@
-﻿@using UI.Web.Areas.Admin.Utility
+﻿@*@using UI.Web.Areas.Admin.Utility
 
-@model CurrentUser
+@model CurrentUser*@
 
 <div class="side-menu sidebar-inverse">
     <nav class="navbar navbar-default" role="navigation">
@@ -8,7 +8,7 @@
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">
                     <div class="icon fa fa-paper-plane"></div>
-                    <div class="title">WebApp.Admin</div>
+                    <div class="title">ITLifeBlog.Admin</div>
                 </a>
                 <button type="button" class="navbar-expand-toggle pull-right visible-xs">
                     <i class="fa fa-times icon"></i>
@@ -38,7 +38,7 @@
                         </div>
                     </div>
                 </li>
-                @if (CurrentUser.RoleId == "1")
+                @if (System.Web.HttpContext.Current.Session["RoleId"].ToString() == "1")
                 {
                     <li class="panel panel-default dropdown">
                         <a data-toggle="collapse" href="#dropdown-category">
@@ -100,7 +100,7 @@
                         </div>
                     </div>
                 </li>
-                @if (CurrentUser.RoleId == "1")
+                @if (System.Web.HttpContext.Current.Session["RoleId"].ToString() == "1")
                 {
                     <li class="panel panel-default dropdown">
                         <a data-toggle="collapse" href="#dropdown-account">

@@ -30,7 +30,7 @@ namespace UI.Web.Areas.Web.Controllers
             page.PageIndex = pageIndex == null ? 1 : pageIndex.Value;
             page.PageSize = 10;
             page.Items = _articleService.FindPageList(pageIndex, "").Where(t => t.IsDeleted == false).ToList();
-            page.TotalNumber = _articleService.Count();
+            page.TotalNumber = _articleService.FindList().Where(t => t.IsDeleted == false).Count();
             #region 构造分页
             //构造标签
             int PageCount = page.TotalNumber;
@@ -65,6 +65,7 @@ namespace UI.Web.Areas.Web.Controllers
             model.ArticleModels = page.Items.ToList();
             model.ArticleModels2 = _articleService.FindList().OrderByDescending(t => t.ReadNum).ToList();
             model.CategoryModels = _categoryService.FindList().OrderBy(t => t.Order).ToList();
+            model.AccountModels = _accountService.FindList().ToList();
             return View(model);
         }
 

@@ -73,6 +73,8 @@ namespace UI.Web.Areas.Web.Controllers
         {
             var model = new ListModel();
             model.Article = _articleService.Find(id);
+            model.Category = _categoryService.Find(model.Article.CategoryId);
+            model.Account = _accountService.FindById(model.Article.AccountId);
             model.ArticleModels2 = _articleService.FindList().OrderByDescending(t => t.ReadNum).ToList();
             model.CategoryModels = _categoryService.FindList().OrderBy(t => t.Order).ToList();
             model.AccountModels = _accountService.FindList().Where(t => t.RoleId == 2).ToList();
@@ -80,6 +82,21 @@ namespace UI.Web.Areas.Web.Controllers
             _articleService.Update(model.Article);
             return View(model);
         }
+
+        //[HttpGet]
+        //public ActionResult ArticleDetail(string guid)
+        //{
+        //    var model = new ListModel();
+        //    model.Article = _articleService.Find(guid);
+        //    model.Category = _categoryService.Find(model.Article.CategoryId);
+        //    model.Account = _accountService.FindById(model.Article.AccountId);
+        //    model.ArticleModels2 = _articleService.FindList().OrderByDescending(t => t.ReadNum).ToList();
+        //    model.CategoryModels = _categoryService.FindList().OrderBy(t => t.Order).ToList();
+        //    model.AccountModels = _accountService.FindList().Where(t => t.RoleId == 2).ToList();
+        //    model.Article.ReadNum += 1;
+        //    _articleService.Update(model.Article);
+        //    return View(model);
+        //}
 
         [HttpGet]
         public ActionResult ArticleCategory(int id)
@@ -94,7 +111,7 @@ namespace UI.Web.Areas.Web.Controllers
             Paging<Article> page = new Paging<Article>();
             page.PageIndex = pageIndex == null ? 1 : pageIndex.Value;
             page.PageSize = 10;
-            page.Items = _articleService.FindPageListByCategoryId(pageIndex, id2).ToList();
+            page.Items = _articleService.FindPageListByCategoryId(pageIndex, id2).Where(t => t.IsDeleted == false).ToList();
             page.TotalNumber = _articleService.FindList().Where(t => t.CategoryId == id2).Count();
             #region 构造分页
             //构造标签
@@ -130,6 +147,7 @@ namespace UI.Web.Areas.Web.Controllers
             model.ArticleModels = page.Items.ToList();
             model.ArticleModels2 = _articleService.FindList().OrderByDescending(t => t.ReadNum).ToList();
             model.CategoryModels = _categoryService.FindList().OrderBy(t => t.Order).ToList();
+            model.AccountModels = _accountService.FindList().ToList();
             return View(model);
         }
 
@@ -146,7 +164,7 @@ namespace UI.Web.Areas.Web.Controllers
             Paging<Article> page = new Paging<Article>();
             page.PageIndex = pageIndex == null ? 1 : pageIndex.Value;
             page.PageSize = 10;
-            page.Items = _articleService.FindPageListByAccountId(pageIndex, id2).ToList();
+            page.Items = _articleService.FindPageListByAccountId(pageIndex, id2).Where(t => t.IsDeleted == false).ToList();
             page.TotalNumber = _articleService.FindList().Where(t => t.AccountId == id2).Count();
             #region 构造分页
             //构造标签
@@ -182,6 +200,7 @@ namespace UI.Web.Areas.Web.Controllers
             model.ArticleModels = page.Items.ToList();
             model.ArticleModels2 = _articleService.FindList().OrderByDescending(t => t.ReadNum).ToList();
             model.CategoryModels = _categoryService.FindList().OrderBy(t => t.Order).ToList();
+            model.AccountModels = _accountService.FindList().ToList();
             return View(model);
         }
     }

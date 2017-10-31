@@ -118,6 +118,7 @@ namespace UI.Web.Areas.Admin.Controllers
                 System.Web.HttpContext.Current.Session["UserId"] = account.Id;
                 System.Web.HttpContext.Current.Session["UserName"] = account.Name;
                 System.Web.HttpContext.Current.Session["RoleId"] = account.RoleId;
+                System.Web.HttpContext.Current.Session.Timeout = 120;
             }
             else
             {

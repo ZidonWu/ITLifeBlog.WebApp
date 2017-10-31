@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ITLifeBlog.WebApp</title>
+    <title>ITLifeBlog</title>
 
     <link href="~/Src/Web/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Src/Web/css/ionicons.min.css" rel="stylesheet" />
@@ -21,7 +21,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <p class="copyright">&copy; @DateTime.Now.Year - ITLifeBlog.WebApp<span> | </span><a href="http://www.miitbeian.gov.cn/" style="color:#919497;">沪ICP备16047615号</a></p>
+                    <p class="copyright">&copy; @DateTime.Now.Year - ITLifeBlog<span> | </span><a href="http://www.miitbeian.gov.cn/" style="color:#919497;">沪ICP备16047615号</a></p>
                 </div>
             </div>
         </div>
@@ -35,7 +35,6 @@
                 <li><a href="@Url.Action("Index","Home",new { Areas = "Web" })">Home</a></li>
                 <li><a href="@Url.Action("Index","Article",new { Areas = "Web" })">Article</a></li>
                 <li><a href="@Url.Action("About","Home",new { Areas = "Web" })">About</a></li>
-                <li><a href="@Url.Action("Contact","Home",new { Areas = "Web" })">Contract</a></li>
             </ul>
         </nav>
     </div>

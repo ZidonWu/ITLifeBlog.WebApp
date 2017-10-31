@@ -9,11 +9,11 @@
                     <header class="entry-header">
                         <h1 class="entry-title">@Model.Article.Title</h1>
                         <div class="entry-meta">
-                            <span class="post-category">Category:<a href="@Html.Raw("/Web/Article/ArticleCategory/" + Model.Article.CategoryId)">@Model.Article.CategoryId</a></span>
+                            <span class="post-category">Category:<a href="@Html.Raw("/Web/Article/ArticleCategory/" + Model.Article.CategoryId)">@Model.Article.Category.Name</a></span>
 
                             <span class="post-date">Date:<a href="#"><time class="entry-date" datetime="2012-11-09T23:15:57+00:00">@Model.Article.CreateTime.ToString("yyyy-MM-dd")</time></a></span>
 
-                            <span class="comments-link">Author:<a href="#">@Model.Article.AccountId</a></span>
+                            <span class="comments-link">Author:<a href="@Html.Raw("/Web/Article/ArticleAccount/" + Model.Article.AccountId)">@Model.Article.Account.Name</a></span>
 
                             @*<span class="comments-link"><a href="#">@Model.Article.CommentNum</a></span>*@
                         </div>

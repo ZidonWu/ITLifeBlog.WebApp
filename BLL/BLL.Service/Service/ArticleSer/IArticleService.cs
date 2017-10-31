@@ -11,6 +11,7 @@ namespace BLL.Service.Service.ArticleSer
     public interface IArticleService
     {
         Article Find(int id);
+        Article Find(string guid);  
         Article Find(Expression<Func<Article, bool>> where);
 
         IEnumerable<Article> FindList();

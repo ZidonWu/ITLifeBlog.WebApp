@@ -23,5 +23,7 @@ namespace BLL.Contract
 
         public int RoleId { get; set; }
 
+        public virtual Role Role { get; set; }
+            
     }
 }

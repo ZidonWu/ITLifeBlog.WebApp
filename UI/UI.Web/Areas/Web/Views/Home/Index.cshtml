@@ -13,11 +13,11 @@
                                 <a href="@Html.Raw("/Web/Article/ArticleDetail/" + item.Id)">@item.Title</a>
                             </h1>
                             <div class="entry-meta">
-                                <span class="post-category">Category:<a href="@Html.Raw("/Web/Article/ArticleCategory/" + item.CategoryId)">@item.CategoryId</a></span>
+                                <span class="post-category">Category:<a href="@Html.Raw("/Web/Article/ArticleCategory/" + item.CategoryId)">@item.Category.Name</a></span>
 
                                 <span class="post-date">Date:<a href="#"><time class="entry-date" datetime="2012-11-09T23:15:57+00:00">@item.CreateTime.ToString("yyyy-MM-dd")</time></a></span>
 
-                                <span class="comments-link">Author:<a href="#">@item.AccountId</a></span>
+                                <span class="comments-link">Author:<a href="@Html.Raw("/Web/Article/ArticleAccount/" + item.AccountId)">@item.Account.Name</a></span>
 
                                 @*<span class="comments-link">ReadNum<a href="#">@item.ReadNum</a></span>*@
                             </div>
@@ -34,11 +34,11 @@
                 <div class="section-container">
                     <!-- begin pagination -->
                     <div class="pagination-container text-center">
-                        <div class="col-md-3" style="margin-top:28px;">
-                            当前页 @ViewBag.PageIndex
-                            共 @ViewBag.PageCount 页
+                        <div class="col-md-4" style="margin-top:28px;">
+                            Current Page: @ViewBag.PageIndex
+                            Total Page: @ViewBag.PageCount
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-md-8">
                             <ul class="pagination m-t-0 m-b-0">
                                 @Html.Raw(ViewBag.Page)
                             </ul>
@@ -48,7 +48,7 @@
                 </div>
             </main>
             <aside class="col-md-3">
-                <div class="widget widget-recent-posts">
+                <div class="widget widget-category">
                     <h3 class="widget-title">Popular Articles</h3>
                     <ul>
                         @{
@@ -78,6 +78,24 @@
                                 {
                                     <li>
                                         <a href="@Html.Raw("/Web/Article/ArticleCategory/" + item.Id)">@item.Name</a>
+                                    </li>
+                                }
+                            }
+                        }
+                    </ul>
+                </div>
+                <div class="widget widget-category">
+                    <h3 class="widget-title">Author</h3>
+                    <ul>
+                        @{
+                            foreach (var item in Model.AccountModels)
+                            {
+                                if (item.RoleId == 2)
+                                {
+                                    <li>
+                                        <a href="@Html.Raw("/Web/Article/ArticleAccount/" + item.Id)">
+                                            @item.Name
+                                        </a>
                                     </li>
                                 }
                             }

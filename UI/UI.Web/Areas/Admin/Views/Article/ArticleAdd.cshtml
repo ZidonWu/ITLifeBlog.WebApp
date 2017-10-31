@@ -75,7 +75,13 @@
             width: "100%",
             height: 640,
             syncScrolling: "single",
-            path: "/Src/editor.md-master/lib/"
+            path: "/Src/editor.md-master/lib/",
+            saveHTMLToTextarea: true,//注意3：这个配置，方便post提交表单
+
+            /**上传图片相关配置如下*/
+            imageUpload: true,
+            imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+            imageUploadURL: "/web/upload/editormdPic/",//注意你后端的上传图片服务地址
         });
 
         /*

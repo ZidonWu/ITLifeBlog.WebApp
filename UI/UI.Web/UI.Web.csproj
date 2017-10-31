@@ -201,6 +201,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="logo.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -589,6 +590,16 @@
     <Content Include="Src\editor.md-master\editormd.amd.min.js" />
     <Content Include="Src\editor.md-master\editormd.js" />
     <Content Include="Src\editor.md-master\editormd.min.js" />
+    <Content Include="Src\editor.md-master\examples\css\style.css" />
+    <Content Include="Src\editor.md-master\examples\images\4.jpg" />
+    <Content Include="Src\editor.md-master\examples\images\7.jpg" />
+    <Content Include="Src\editor.md-master\examples\images\8.jpg" />
+    <Content Include="Src\editor.md-master\examples\images\editormd-screenshot.png" />
+    <Content Include="Src\editor.md-master\examples\js\jquery.min.js" />
+    <Content Include="Src\editor.md-master\examples\js\require.min.js" />
+    <Content Include="Src\editor.md-master\examples\js\sea.js" />
+    <Content Include="Src\editor.md-master\examples\js\seajs-main.js" />
+    <Content Include="Src\editor.md-master\examples\js\zepto.min.js" />
     <Content Include="Src\editor.md-master\fonts\editormd-logo.svg" />
     <Content Include="Src\editor.md-master\fonts\fontawesome-webfont.svg" />
     <Content Include="Src\editor.md-master\Gulpfile.js" />
