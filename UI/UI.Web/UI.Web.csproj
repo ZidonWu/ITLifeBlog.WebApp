@@ -181,6 +181,7 @@
     <Compile Include="Areas\Web\Controllers\ArticleController.cs" />
     <Compile Include="Areas\Web\Controllers\HomeController.cs" />
     <Compile Include="Areas\Web\Models\ListModel.cs" />
+    <Compile Include="Areas\Web\Models\SearchModel.cs" />
     <Compile Include="Areas\Web\WebAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -234,6 +235,7 @@
     <Content Include="Areas\Web\Views\Article\ArticleCategory2.cshtml" />
     <Content Include="Areas\Admin\Views\Article\ArticleUpdate.cshtml" />
     <Content Include="Areas\Web\Views\Article\ArticleAccount2.cshtml" />
+    <Content Include="Areas\Web\Views\Article\ArticleSearch.cshtml" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

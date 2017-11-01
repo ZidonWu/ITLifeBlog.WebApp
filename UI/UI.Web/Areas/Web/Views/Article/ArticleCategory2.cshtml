@@ -46,6 +46,14 @@
             </main>
             <aside class="col-md-3">
                 <div class="widget widget-category">
+                    <h3 class="widget-title">Search Articles</h3>
+                    @using (Html.BeginForm("Search", "Article", FormMethod.Post, new { @class = "margin-bottom-0", role = "form", id = "searchform" }))
+                    {
+                        @Html.TextBoxFor(m => m.SearchModel.Title, new { @class = "form-control input-lg", placeholder = "Search" })
+                        <button type="submit"><span class="ion-ios-search-strong"></span></button>
+                    }
+                </div>
+                <div class="widget widget-category">
                     <h3 class="widget-title">Popular Articles</h3>
                     <ul>
                         @{

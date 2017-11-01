@@ -41,19 +41,19 @@ namespace UI.Web.Areas.Web.Controllers
             //string pages = "<li><a href='" + urlhead + "1" + "'>First Page</a></li>"; ;
             if (page.PageIndex == 1)
             {
-                pages += "<li class='disabled'><a href='#'>Previous Page </a></li>";
+                pages += "<li class='disabled'><a href='#' style='width:125px;'>Previous Page </a></li>";
             }
             else
             {
-                pages += "<li ><a href='" + urlhead + (page.PageIndex - 1) + "'>Previous Page</a></li>";
+                pages += "<li ><a href='" + urlhead + (page.PageIndex - 1) + "' style='width:125px;'>Previous Page</a></li>";
             }
             if (page.PageIndex == totalPage)
             {
-                pages += "<li class='disabled'><a href='#'>Next Page</a></li>";
+                pages += "<li class='disabled'><a href='#' style='width:125px;'>Next Page</a></li>";
             }
             else
             {
-                pages += "<li ><a href='" + urlhead + (page.PageIndex + 1) + "'>Next Page</a></li>";
+                pages += "<li ><a href='" + urlhead + (page.PageIndex + 1) + "' style='width:125px;'>Next Page</a></li>";
             }
             //pages += "<li ><a href='" + urlhead + totalPage + "'>End Page</a></li>";
             ViewBag.Page = pages;
@@ -123,19 +123,19 @@ namespace UI.Web.Areas.Web.Controllers
             //string pages = "<li><a href='" + urlhead + "1" + "'>First Page</a></li>"; ;
             if (page.PageIndex == 1)
             {
-                pages += "<li class='disabled'><a href='#'>Previous Page </a></li>";
+                pages += "<li class='disabled'><a href='#' style='width:125px;'>Previous Page </a></li>";
             }
             else
             {
-                pages += "<li ><a href='" + urlhead + (page.PageIndex - 1) + "'>Previous Page</a></li>";
+                pages += "<li ><a href='" + urlhead + (page.PageIndex - 1) + "' style='width:125px;'>Previous Page</a></li>";
             }
             if (page.PageIndex == totalPage)
             {
-                pages += "<li class='disabled'><a href='#'>Next Page</a></li>";
+                pages += "<li class='disabled'><a href='#' style='width:125px;'>Next Page</a></li>";
             }
             else
             {
-                pages += "<li ><a href='" + urlhead + (page.PageIndex + 1) + "'>Next Page</a></li>";
+                pages += "<li ><a href='" + urlhead + (page.PageIndex + 1) + "' style='width:125px;'>Next Page</a></li>";
             }
             //pages += "<li ><a href='" + urlhead + totalPage + "'>End Page</a></li>";
             ViewBag.Page = pages;
@@ -176,19 +176,19 @@ namespace UI.Web.Areas.Web.Controllers
             //string pages = "<li><a href='" + urlhead + "1" + "'>First Page</a></li>"; ;
             if (page.PageIndex == 1)
             {
-                pages += "<li class='disabled'><a href='#'>Previous Page </a></li>";
+                pages += "<li class='disabled'><a href='#' style='width:125px;'>Previous Page </a></li>";
             }
             else
             {
-                pages += "<li ><a href='" + urlhead + (page.PageIndex - 1) + "'>Previous Page</a></li>";
+                pages += "<li ><a href='" + urlhead + (page.PageIndex - 1) + "' style='width:125px;'>Previous Page</a></li>";
             }
             if (page.PageIndex == totalPage)
             {
-                pages += "<li class='disabled'><a href='#'>Next Page</a></li>";
+                pages += "<li class='disabled'><a href='#' style='width:125px;'>Next Page</a></li>";
             }
             else
             {
-                pages += "<li ><a href='" + urlhead + (page.PageIndex + 1) + "'>Next Page</a></li>";
+                pages += "<li ><a href='" + urlhead + (page.PageIndex + 1) + "' style='width:125px;'>Next Page</a></li>";
             }
             //pages += "<li ><a href='" + urlhead + totalPage + "'>End Page</a></li>";
             ViewBag.Page = pages;
@@ -203,5 +203,62 @@ namespace UI.Web.Areas.Web.Controllers
             model.AccountModels = _accountService.FindList().ToList();
             return View(model);
         }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult Search(SearchModel searchModel)
+        {
+            string title = searchModel.Title;
+            Session["title"] = title;
+            return RedirectToAction("/ArticleSearch/");
+        }
+
+        [HttpGet]
+        public ActionResult ArticleSearch(int? pageIndex, string where = "")
+        {
+            var search = Session["title"].ToString();
+            Paging<Article> page = new Paging<Article>();
+            page.PageIndex = pageIndex == null ? 1 : pageIndex.Value;
+            page.PageSize = 10;
+            page.Items = _articleService.FindPageList(pageIndex, "").Where(x => x.Title.Contains(search)).ToList();
+            page.TotalNumber = _articleService.FindList().Where(x=>x.Title.Contains(search)).Count();
+            #region 构造分页
+            //构造标签
+            int PageCount = page.TotalNumber;
+            int PageSize = page.PageSize;
+            int totalPage = (PageCount + PageSize - 1) / PageSize;
+            string urlhead = "/Web/Article/Index/" + pageIndex + "?pageindex=";
+            string pages = "";
+            //string pages = "<li><a href='" + urlhead + "1" + "'>First Page</a></li>"; ;
+            if (page.PageIndex == 1)
+            {
+                pages += "<li class='disabled'><a href='#' style='width:125px;'>Previous Page </a></li>";
+            }
+            else
+            {
+                pages += "<li ><a href='" + urlhead + (page.PageIndex - 1) + "' style='width:125px;'>Previous Page</a></li>";
+            }
+            if (page.PageIndex == totalPage)
+            {
+                pages += "<li class='disabled'><a href='#' style='width:125px;'>Next Page</a></li>";
+            }
+            else
+            {
+                pages += "<li ><a href='" + urlhead + (page.PageIndex + 1) + "' style='width:125px;'>Next Page</a></li>";
+            }
+            //pages += "<li ><a href='" + urlhead + totalPage + "'>End Page</a></li>";
+            ViewBag.Page = pages;
+            ViewBag.PageIndex = page.PageIndex;
+            ViewBag.PageCount = totalPage;
+            #endregion
+
+            var model = new ListModel();
+            model.ArticleModels = page.Items.ToList();
+            model.ArticleModels2 = _articleService.FindList().OrderByDescending(t => t.ReadNum).ToList();
+            model.CategoryModels = _categoryService.FindList().OrderBy(t => t.Order).ToList();
+            model.AccountModels = _accountService.FindList().ToList();
+            return View(model);
+        }
+
     }
 }

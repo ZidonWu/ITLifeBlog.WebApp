@@ -20,6 +20,10 @@ namespace UI.Web.Areas.Web.Models
 
         public Account Account { get; set; }
 
-        public IList<Account> AccountModels { get; set; }   
+        public IList<Account> AccountModels { get; set; }
+
+        public SearchModel SearchModel { get; set; }
+
+
     }
 }

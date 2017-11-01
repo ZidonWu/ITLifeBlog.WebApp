@@ -41,19 +41,19 @@ namespace UI.Web.Areas.Web.Controllers
             //string pages = "<li><a href='" + urlhead + "1" + "'>First Page</a></li>"; ;
             if (page.PageIndex == 1)
             {
-                pages += "<li class='disabled'><a href='#'>Previous Page </a></li>";
+                pages += "<li class='disabled'><a href='#' style='width:125px;'>Previous Page </a></li>";
             }
             else
             {
-                pages += "<li ><a href='" + urlhead + (page.PageIndex - 1) + "'>Previous Page</a></li>";
+                pages += "<li ><a href='" + urlhead + (page.PageIndex - 1) + "' style='width:125px;'>Previous Page</a></li>";
             }
             if (page.PageIndex == totalPage)
             {
-                pages += "<li class='disabled'><a href='#'>Next Page</a></li>";
+                pages += "<li class='disabled'><a href='#' style='width:125px;'>Next Page</a></li>";
             }
             else
             {
-                pages += "<li ><a href='" + urlhead + (page.PageIndex + 1) + "'>Next Page</a></li>";
+                pages += "<li ><a href='" + urlhead + (page.PageIndex + 1) + "' style='width:125px;'>Next Page</a></li>";
             }
             //pages += "<li ><a href='" + urlhead + totalPage + "'>End Page</a></li>";
             ViewBag.Page = pages;
