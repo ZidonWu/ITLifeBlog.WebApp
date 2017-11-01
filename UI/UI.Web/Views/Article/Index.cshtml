@@ -1,0 +1,49 @@
+﻿@using UI.Web.Models
+@model ListModel
+
+<div class="content-body">
+    <div class="container">
+        <div class="row">
+            <main class="col-md-12">
+                @foreach (var item in Model.ArticleModels)
+                {
+                    <article class="post post-1">
+                        <header class="entry-header">
+                            <h1 class="entry-title">
+                                <a href="@Html.Raw("/Article/ArticleDetail/" + item.Id + ".html")">@item.Title</a>
+                            </h1>
+                            <div class="entry-meta">
+                                <span class="post-category">Category:<a href="@Html.Raw("/Article/ArticleCategory/" + item.CategoryId + ".html")">@item.Category.Name</a></span>
+                                <span class="post-date">Date:<a href="#"><time class="entry-date" datetime="2012-11-09T23:15:57+00:00">@item.CreateTime.ToString("yyyy-MM-dd")</time></a></span>
+                                <span class="comments-link">Author:<a href="@Html.Raw("/Article/ArticleAccount/" + item.AccountId + ".html")">@item.Account.Name</a></span>
+                                @*<span class="comments-link"><a href="">@item.CommentNum</a></span>*@
+                            </div>
+                        </header>
+                        <div class="entry-content clearfix">
+                            <p>@item.Description</p>
+                            <div class="read-more cl-effect-14">
+                                <a href="@Html.Raw("/Article/ArticleDetail/" + item.Id + ".html")" class="more-link">Continue Reading <span class="meta-nav">→</span></a>
+                            </div>
+                        </div>
+                    </article>
+                }
+                <hr />
+                <div class="section-container">
+                    <!-- begin pagination -->
+                    <div class="pagination-container text-center">
+                        <div class="col-md-4" style="margin-top:28px;">
+                            Current Page: @ViewBag.PageIndex
+                            Total Page: @ViewBag.PageCount
+                        </div>
+                        <div class="col-md-8">
+                            <ul class="pagination m-t-0 m-b-0">
+                                @Html.Raw(ViewBag.Page)
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- end pagination -->
+                </div>
+            </main>
+        </div>
+    </div>
+</div>

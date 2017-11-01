@@ -183,11 +183,14 @@
     <Compile Include="Areas\Web\Models\ListModel.cs" />
     <Compile Include="Areas\Web\Models\SearchModel.cs" />
     <Compile Include="Areas\Web\WebAreaRegistration.cs" />
+    <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Areas\Admin\Utility\AccountAuthor.cs" />
+    <Compile Include="Models\ListModel.cs" />
+    <Compile Include="Models\SearchModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -196,6 +199,17 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Web\Views\Article\ArticleAccount2.cshtml" />
+    <Content Include="Areas\Web\Views\Article\ArticleCategory2.cshtml" />
+    <Content Include="Areas\Web\Views\Article\ArticleDetail.cshtml" />
+    <Content Include="Areas\Web\Views\Article\ArticleSearch.cshtml" />
+    <Content Include="Areas\Web\Views\Article\Index.cshtml" />
+    <Content Include="Areas\Web\Views\Home\About.cshtml" />
+    <Content Include="Areas\Web\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Web\Views\Shared\_HeaderPartial.cshtml" />
+    <Content Include="Areas\Web\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Web\Views\web.config" />
+    <Content Include="Areas\Web\Views\_ViewStart.cshtml" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -209,7 +223,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Areas\Admin\Views\web.config" />
-    <Content Include="Areas\Web\Views\web.config" />
     <Content Include="Areas\Admin\Views\Account\Login.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_HeaderPartial.cshtml" />
@@ -225,17 +238,7 @@
     <Content Include="Areas\Admin\Views\Account\AccountAdd.cshtml" />
     <Content Include="Areas\Admin\Views\Account\UpdatePassword.cshtml" />
     <Content Include="Areas\Admin\Views\Article\ArticleAdd.cshtml" />
-    <Content Include="Areas\Web\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Web\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Web\Views\Home\Index.cshtml" />
-    <Content Include="Areas\Web\Views\Shared\_HeaderPartial.cshtml" />
-    <Content Include="Areas\Web\Views\Article\Index.cshtml" />
-    <Content Include="Areas\Web\Views\Home\About.cshtml" />
-    <Content Include="Areas\Web\Views\Article\ArticleDetail.cshtml" />
-    <Content Include="Areas\Web\Views\Article\ArticleCategory2.cshtml" />
     <Content Include="Areas\Admin\Views\Article\ArticleUpdate.cshtml" />
-    <Content Include="Areas\Web\Views\Article\ArticleAccount2.cshtml" />
-    <Content Include="Areas\Web\Views\Article\ArticleSearch.cshtml" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -1069,11 +1072,17 @@
     <Content Include="Src\editor.md-master\scss\lib\prefixes.scss" />
     <Content Include="Src\editor.md-master\scss\lib\variables.scss" />
     <Content Include="Src\editor.md-master\scss\prettify.scss" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_HeaderPartial.cshtml" />
+    <Content Include="Views\Article\ArticleAccount2.cshtml" />
+    <Content Include="Views\Article\ArticleCategory2.cshtml" />
+    <Content Include="Views\Article\ArticleDetail.cshtml" />
+    <Content Include="Views\Article\ArticleSearch.cshtml" />
+    <Content Include="Views\Article\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
-    <Folder Include="Views\Home\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
